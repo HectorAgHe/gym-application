@@ -4,6 +4,8 @@ import { useState } from "react"
 import {View,Image,Text,TextInput, StyleSheet, Pressable} from "react-native"
 // import  SecureStore from 'expo-secure-store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import logo from "../assets/WhatsApp Image 2024-10-07 at 12.38.12 PM.jpeg"
+import { ArrowIcon } from "../components/Icons";
 
 
 export default function FormSignIn(){
@@ -40,67 +42,91 @@ export default function FormSignIn(){
     }
    }
 
-    return (
-        <>
+   return (
+    <>
       
 
         
-        <View style={styles.containerInputs} >
-            <Image source={{uri: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/gym-fitness-center-video-logo-social-media-design-template-f9566537b0445b719d2c9ae5b4264d3c_screen.jpg?ts=1589533347'}}
-              style={{ width: 200, height: 200 }}
+        <View style={styles.mainContainer} >
+            <Image source={logo}
+              style={styles.logo}
              />
-            <TextInput
-            placeholder="Ingresa tu nombre de usuario"
+           <View style={styles.inputsContainer} >
+            <Text style={{color:"white"}} >Nombre de usuario:</Text>
+           <TextInput
+            // placeholder="Ingresa un nombre de usuario"
             style={[styles.inputUser, { borderColor: borderColorUser }]}
-            onFocus={() => setBorderColorUser('orange')}
+            onFocus={() => setBorderColorUser('#f4f2ee')}
             onChangeText={(text) => {
                 setUsername(text)
             }}
             />
+            <Text style={{color:"white"}} >Ingresa una contraseña</Text>
               <TextInput
-            placeholder="Ingresa tu contraseña"
+            // placeholder="Ingresa una contraseña"
             style={[styles.inputPassword, { borderColor: borderColorPassword }]}
             secureTextEntry={true}
-            onFocus={() => setBorderColorPassword('orange')}
+            onFocus={() => setBorderColorPassword('#f4f2ee')}
             onChangeText={(text)=>setPassword(text)}
             />
             <View style={styles.containerRegister} >
                <Pressable onPress={async()=>{
                 await signIn()
+                console.log('Se esta ejecutando el pressable')
                }} style={styles.buttonRegister} >
-                <Text style={styles.textButtonRegister} >Iniciar Sesion</Text>
+                <ArrowIcon/>
                </Pressable>
             </View>
+           </View>
         </View>
         </>
     )
 }
 
 const styles = StyleSheet.create({
-    containerInputs:{
+    mainContainer:{
         flex:1,
         justifyContent: 'center',
         alignItems: 'center',
-        gap:'20px'
+        backgroundColor:"black"
+    },
+    logo:{
+        width: 200,
+        height: 200,
+        marginTop:70,
+    },
+    inputsContainer:{
+        flex:1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: "50%",
+        backgroundColor:"black",
+        width: "100%",
+        gap: 10,
+        borderTopStartRadius: 35,
+        borderTopEndRadius:35,
+        marginTop: 50
     },
     inputUser:{
         width:250,
         height:35,
         borderWidth:2,
-        borderColor:'orange',
+        borderColor:"#f4f2ee",
         borderRadius:10,
         textAlign: 'center',
+        backgroundColor:"#f4f2ee"
     },
     inputPassword:{
         width:250,
         height:35,
         borderWidth:2,
-        borderColor:'orange',
+        borderColor:'#f4f2ee',
         borderRadius:10,
         textAlign: 'center',
+        backgroundColor:"#f4f2ee"
     },
     containerRegister:{
-        marginTop:10,
+        marginTop:20,
     },
     buttonRegister:{
        justifyContent: 'center',
@@ -109,7 +135,7 @@ const styles = StyleSheet.create({
        borderWidth:2,
        borderColor:'orange',
        borderRadius:20,
-       width:230,
+       width:200,
        height:40,      
     },
     textButtonRegister:{
