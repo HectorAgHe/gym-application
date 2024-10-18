@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         gap: 10,
         borderTopStartRadius: 35,
         borderTopEndRadius:35,
-        marginTop: 50
+        marginTop: 40
     },
     inputUser:{
         width:250,

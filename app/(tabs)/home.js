@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
+import { useRouter } from "expo-router";
 
 export default function Home() {
   const [userName, setUserName] = useState("");
+  const router = useRouter()
 
   useEffect(() => {
     const loadUserData = async () => {
@@ -56,15 +58,16 @@ export default function Home() {
 
         {/* Sección de botones para navegar */}
         <View style={styles.buttonSection}>
-          <TouchableOpacity style={styles.navButton}>
+          <Pressable style={styles.navButton} onPress={()=>{
+            router.push('/routines')
+          }} >
             <Text style={styles.navButtonText}>Mis rutinas</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton}>
+          </Pressable>
+          <Pressable style={styles.navButton} onPress={()=>{
+            router.push('/schedule')
+          }} >
             <Text style={styles.navButtonText}>Agenda una clase</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton}>
-            <Text style={styles.navButtonText}>Dietas</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </ScrollView>
     </View>
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: 24, // Tamaño de fuente más grande para destacar el nombre del usuario
     fontWeight: "bold",
-    color: "#FF6600", // Color naranja para resaltar
+    color: '#F0A500', // Color naranja para resaltar
     flexShrink: 1, // Evita que el texto se salga de la pantalla
   },
   avatar: {
@@ -105,7 +108,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     marginLeft: 10,
     borderWidth: 2,
-    borderColor: "#FF6600", // Borde del avatar con color naranja
+    borderColor: '#F0A500', // Borde del avatar con color naranja
   },
   progressSection: {
     marginBottom: 30,
@@ -115,7 +118,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#FF6600",
+    color: '#F0A500',
     marginBottom: 15,
     textAlign: "center",
   },
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
   progressNumber: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#FF6600", // Color del número en naranja
+    color: '#F0A500', // Color del número en naranja
     marginBottom: 10,
   },
   progressLabel: {
@@ -151,7 +154,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   navButton: {
-    backgroundColor: "#FF6600", // Fondo naranja para los botones
+    backgroundColor: '#F0A500', // Fondo naranja para los botones
     paddingVertical: 15,
     borderRadius: 10,
     alignItems: "center",

@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView, StyleSheet, ActivityIndicator, Pressable } from "react-native";
 import axios from "axios";
 import { ArrowIcon } from "../../components/Icons";
+import { useRouter } from "expo-router";
 
 export default function Exercises() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+
+  const router = useRouter()
 
   useEffect(() => {
     const getData = async () => {
@@ -41,7 +45,9 @@ export default function Exercises() {
                 <Text style={styles.subTitle}>Difficulty: {exercise.difficulty}</Text>
                 <Text style={styles.description}>Targeted Muscle: {exercise.muscle}</Text>
                 <Text style={styles.instructions}>Instructions: {exercise.instructions}</Text>
-                <Pressable style={styles.button}>
+                <Pressable style={styles.button} onPress={()=>{
+                   router.push(`/exercise/${exercise.id}`)
+                }} >
                   <Text style={styles.buttonText}>Ver detalles</Text>
                   <ArrowIcon color="orange" />
                 </Pressable>

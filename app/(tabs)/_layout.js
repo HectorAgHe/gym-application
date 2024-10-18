@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 import { View } from "react-native";
-import { HomeIcon, ExcerciceIcon, UserIcon } from "../../components/Icons";
+import { HomeIcon, ExcerciceIcon, UserIcon, CalendarIcon } from "../../components/Icons";
 
 /*Este layout renderiza las pestañas, los archivos que este dentro de tabs contaran como una pestaña*/
 export default function TabsLayout (){
@@ -31,6 +31,13 @@ export default function TabsLayout (){
         title: "Ejercicios",
         tabBarIcon: ({ color }) => <ExcerciceIcon color={color} />,
       }}
+    />
+    <Tabs.Screen
+    name="calendar"
+    options={{
+      title:"Calendario",
+      tabBarIcon:({color})=> <CalendarIcon color={color} />
+    }}
     />
      <Tabs.Screen
       name="profile"

@@ -9,18 +9,23 @@ import { ArrowIcon } from "../components/Icons";
 
 export default function FormRegister(){
     const [username,setUsername] = useState(null)
+    const[email,setEmail] = useState(null)
     const [password1,setPassword1] = useState(null)
     const [password2,setPassword2] = useState(null)
     const [borderColorUser, setBorderColorUser] = useState('#f4f2ee');
   const [borderColorPassword, setBorderColorPassword] = useState('#f4f2ee');
   /*Hook para usar la navegacion*/
   const router = useRouter()
+  
+
+
 
 
   const registerUser = async()=>{
     try {
        const res= await axios.post('http://localhost:4000/api/register',{
             username,
+            email,
             password1,
             password2
         })
@@ -55,6 +60,16 @@ export default function FormRegister(){
                 setUsername(text)
             }}
             />
+            <Text style={{color:"white"}} >Email:</Text>
+           <TextInput
+            // placeholder="Ingresa un nombre de usuario"
+            style={[styles.inputUser, { borderColor: borderColorUser }]}
+            onFocus={() => setBorderColorUser('#f4f2ee')}
+            onChangeText={(text) => {
+                setEmail(text)
+            }}
+            />
+            
             <Text style={{color:"white"}} >Ingresa una contraseña</Text>
               <TextInput
             // placeholder="Ingresa una contraseña"
@@ -96,7 +111,7 @@ const styles = StyleSheet.create({
     logo:{
         width: 200,
         height: 200,
-        marginTop:70,
+        marginTop:40,
     },
     inputsContainer:{
         flex:1,
@@ -104,7 +119,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: "50%",
         backgroundColor:"black",
-        marginTop: 20,
+        // marginTop: 5,
         width: "100%",
         gap: 10,
         borderTopStartRadius: 35,
