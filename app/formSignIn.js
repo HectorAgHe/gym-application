@@ -36,7 +36,8 @@ export default function FormSignIn(){
             return
         }
     } catch (error) {
-        // alert(error.response)
+        console.log(error.response.data.error)
+        alert(error.response.data.error)
         // console.log(error)
         // return
     }
