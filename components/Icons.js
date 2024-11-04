@@ -36,4 +36,7 @@ export const CalendarIcon=(props)=>{
 export const EmailIcon=(props)=>{
     return <Fontisto name="email" size={20} color="white" {...props} />
 }
+export const AddIcon=(props)=>{
+    return <Entypo name="add-to-list" size={40} color="orange" />
+}
 

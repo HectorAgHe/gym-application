@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ScrollView, StyleSheet, ActivityIndicator, Pressable } from "react-native";
+import { View, Text, ScrollView, StyleSheet, ActivityIndicator, Pressable, TextInput } from "react-native";
 import axios from "axios";
 import { ArrowIcon } from "../../components/Icons";
 import { useRouter } from "expo-router";
+import { data } from "../../utils/data";
 
 export default function Exercises() {
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
+  const [allExercises, setAllExercises] = useState(null);
+  const [listExercises,setListExercises] = useState(null)
+  const [query,setQuery] = useState(null)
   const [isLoading, setIsLoading] = useState(true);
 
 
@@ -13,43 +17,63 @@ export default function Exercises() {
 
   useEffect(() => {
     const getData = async () => {
-      try {
-        const res = await axios.get(`https://api.api-ninjas.com/v1/exercises`, {
-          headers: {
-            "X-Api-Key": "G4k19+PbzCvNOhWGjTFX8Q==s7fuD6DMdeiAfseD",
-          },
-        });
-        setData(res.data);
+      // try {
+      //   const res = await axios.get(`https://api.api-ninjas.com/v1/exercises`, {
+      //     headers: {
+      //       "X-Api-Key": "G4k19+PbzCvNOhWGjTFX8Q==s7fuD6DMdeiAfseD",
+      //     },
+      //   });
+        setAllExercises(data) //
+        setListExercises(data)
         setIsLoading(false);
-        console.log(res.data);
-      } catch (error) {
-        console.log("Ocurrió el siguiente error: " + error);
-      }
+      //   console.log(res.data);
+      // } catch (error) {
+      //   console.log("Ocurrió el siguiente error: " + error);
+      // }
     };
     getData();
   }, []);
 
   return (
+    
     <View style={styles.container}>
+          <View style={styles.searchContainer} >
+          <TextInput
+          style={styles.searchInput}
+          placeholder="Busca un ejercicio"
+          placeholderTextColor="#aaa"
+          onChangeText={(text)=>{
+            setQuery(text)
+          }}
+        />
+        <Pressable style={styles.searchButton} onPress={()=>{
+          const filterData = allExercises.filter((item)=>{
+            return item.name === query
+          })
+          setListExercises(filterData)
+        }} >
+          <Text style={styles.searchButtonText}>Buscar</Text>
+        </Pressable>
+          </View>
       {isLoading ? (
         <View style={styles.loaderContainer}>
           <ActivityIndicator size="large" color="orange" />
         </View>
       ) : (
         <ScrollView contentContainerStyle={styles.content}>
-          {data &&
-            data.map((exercise, index) => (
+          {listExercises &&
+            listExercises.map((exercise, index) => (
               <View key={index} style={styles.card}>
                 <Text style={styles.title}>{exercise.name}</Text>
                 <View style={styles.separator} />
-                <Text style={styles.subTitle}>Difficulty: {exercise.difficulty}</Text>
+                {/* <Text style={styles.subTitle}>Difficulty: {exercise.difficulty}</Text>
                 <Text style={styles.description}>Targeted Muscle: {exercise.muscle}</Text>
-                <Text style={styles.instructions}>Instructions: {exercise.instructions}</Text>
+                <Text style={styles.instructions}>Instructions: {exercise.instructions}</Text> */}
                 <Pressable style={styles.button} onPress={()=>{
                    router.push(`/exercise/${exercise.id}`)
                 }} >
                   <Text style={styles.buttonText}>Ver detalles</Text>
-                  <ArrowIcon color="orange" />
+                  <ArrowIcon color="white" />
                 </Pressable>
               </View>
             ))}
@@ -123,7 +147,37 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 16,
-    color: "orange", // Texto en naranja para el botón
+    color: "white", // Texto en naranja para el botón
+    fontWeight: "bold",
+  },
+  searchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 16,
+    backgroundColor: "#1e1e1e",
+    borderRadius: 8,
+    marginTop:30
+    // paddingHorizontal: 10,
+    // paddingVertical: 8,
+  },
+  searchInput: {
+    flex: 1,
+    color: "#f4f2ee",
+    fontSize: 16,
+    paddingLeft: 10,
+    borderWidth:0,
+    outlineStyle:"none"
+  },
+  searchButton: {
+    backgroundColor: "orange",
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginLeft: 8,
+  },
+  searchButtonText: {
+    color: "#f4f2ee",
+    fontSize: 16,
     fontWeight: "bold",
   },
 });
