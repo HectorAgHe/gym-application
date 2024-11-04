@@ -6,7 +6,7 @@ import { useRouter } from "expo-router";
 import { data } from "../../utils/data";
 
 export default function Exercises() {
-  // const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
   const [allExercises, setAllExercises] = useState(null);
   const [listExercises,setListExercises] = useState(null)
   const [query,setQuery] = useState(null)
