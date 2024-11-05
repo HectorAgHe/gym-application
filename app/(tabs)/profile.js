@@ -7,6 +7,7 @@ import { useRouter } from 'expo-router'; // Importar el hook useRouter
 
 export default function Profile() {
   const [userData, setUserData] = useState("");
+  const [isLoading,setIsLoading] = useState(true)
   const router = useRouter(); // Hook para navegar
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export default function Profile() {
             },
           });
           setUserData(res.data.user);
+          setIsLoading(false)
         }
       } catch (error) {
         console.error("Error loading user data", error);
@@ -45,7 +47,7 @@ export default function Profile() {
         <View>
           <Text style={styles.label}>Nombre de usuario:</Text>
           <Text style={styles.userText}>
-            {userData ? `${userData.username}` : "Cargando usuario..."}
+            {userData && !isLoading ? `${userData.username}` : "Cargando usuario..."}
           </Text>
         </View>
       </View>
@@ -54,7 +56,7 @@ export default function Profile() {
         <View>
           <Text style={styles.label}>Email:</Text>
           <Text style={styles.userText}>
-            {userData ? `${userData.email}` : "Cargando email..."}
+            {userData && !isLoading ? `${userData.email}` : "Cargando email..."}
           </Text>
         </View>
       </View>
@@ -65,7 +67,7 @@ export default function Profile() {
         <View>
           <Text style={styles.label}>El usuario fue creado el:</Text>
           <Text style={styles.dateText}>
-            {userData
+            {userData && !isLoading
               ? new Date(userData.date).toLocaleDateString('es-MX', {
                   year: 'numeric',
                   month: 'long',

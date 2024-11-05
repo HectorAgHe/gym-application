@@ -6,6 +6,7 @@ import { useRouter } from "expo-router";
 
 export default function Home() {
   const [userName, setUserName] = useState("");
+  const [isLoading,setIsLoading] = useState(true)
   const router = useRouter()
 
   useEffect(() => {
@@ -19,6 +20,7 @@ export default function Home() {
             },
           });
           setUserName(res.data.user.username);
+          setIsLoading(false)
         }
       } catch (error) {
         console.error("Error loading user data", error);
@@ -33,7 +35,7 @@ export default function Home() {
       <ScrollView contentContainerStyle={styles.container}>
         {/* Header con bienvenida al usuario */}
         <View style={styles.header}>
-          <Text style={styles.welcomeText}>{userName ? `Bienvenido de nuevo, ${userName}!` : "Bienvenido!"}</Text>
+          <Text style={styles.welcomeText}>{userName && !isLoading ? `Bienvenido de nuevo, ${userName}!` : "Bienvenido!"}</Text>
           {/* Avatar del usuario */}
           <Image
             source={{ uri: "https://via.placeholder.com/150" }} // Placeholder para el avatar
@@ -46,11 +48,11 @@ export default function Home() {
           <Text style={styles.sectionTitle}>Tu Progreso</Text>
           <View style={styles.progressContainer}>
             <View style={styles.progressCard}>
-              <Text style={styles.progressNumber}>8</Text>
+              <Text style={styles.progressNumber}>0</Text>
               <Text style={styles.progressLabel}>Trabajos este mes</Text>
             </View>
             <View style={styles.progressCard}>
-              <Text style={styles.progressNumber}>15</Text>
+              <Text style={styles.progressNumber}>0</Text>
               <Text style={styles.progressLabel}>Horas totales</Text>
             </View>
           </View>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
+import { StyleSheet, View, Text, ActivityIndicator, ScrollView, Pressable } from "react-native";
+import { DeleteIcon } from "../components/Icons";
 
 export default function Routines() {
     const [listExercises, setListExercises] = useState([]);
@@ -29,7 +30,8 @@ export default function Routines() {
     }
 
     return (
-        <View style={styles.container}>
+       <ScrollView>
+         <View style={styles.container}>
             {listExercises.length === 0 ? (
                 <Text style={styles.noDataText}>¡Aún no tienes alguna rutina agregada!</Text>
             ) : (
@@ -38,11 +40,30 @@ export default function Routines() {
                         <View key={exercise._id} style={styles.itemContainer}>
                             <Text style={styles.itemTitle}>{exercise.name}</Text>
                             <Text style={styles.itemDescription}>{exercise.description}</Text>
+                            <View style={styles.containerIcon} >
+                            <Pressable onPress={async()=>{
+                               try {
+                                 const res= await axios.delete(`http://localhost:4000/api/ecxercises/${exercise._id}`)
+                                 if(res.status === 201){
+                                    setListExercises(listExercises.filter((e)=>{
+                                        return e._id !== exercise._id
+                                    }))
+                                    console.log('Se elimino correctamente el ejercicio')
+                                    
+                                 }
+                               } catch (error) {
+                                console.log('Ocurrio el siguiente error', error)
+                               }
+                            }} >
+                            <DeleteIcon color='orange' />
+                            </Pressable>
+                            </View>
                         </View>
                     ))}
                 </View>
             )}
         </View>
+       </ScrollView>
     );
 }
 
@@ -84,4 +105,7 @@ const styles = StyleSheet.create({
         color: "#f4f2ee",
         fontSize: 16,
     },
+    containerIcon:{
+        marginTop:20
+    }
 });

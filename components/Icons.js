@@ -39,4 +39,7 @@ export const EmailIcon=(props)=>{
 export const AddIcon=(props)=>{
     return <Entypo name="add-to-list" size={40} color="orange" />
 }
+export const DeleteIcon=(props)=>{
+    return <AntDesign name="delete" size={40} color="orange" />
+}
 

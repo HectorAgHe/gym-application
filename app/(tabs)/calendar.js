@@ -1,69 +1,130 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Modal, TextInput, Button, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
-export default function MyCalendar  ()  {
+export default function MyCalendar() {
   const [selectedDate, setSelectedDate] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [eventText, setEventText] = useState('');
+  const [events, setEvents] = useState({});
+
+  const handleAddEvent = () => {
+    // Guardamos el evento en el estado
+    setEvents({
+      ...events,
+      [selectedDate]: { selected: true, marked: true, dotColor: '#F0A500', event: eventText },
+    });
+    setEventText('');
+    setModalVisible(false);
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.calendarContainer}>
         <Calendar
           theme={{
-            calendarBackground: '#1c1c1c', // Fondo oscuro para el calendario
-            dayTextColor: '#fff', // Texto de los días en blanco
-            monthTextColor: '#fff', // Texto del mes en blanco
-            arrowColor: '#F0A500', // Flechas en color naranja coral
-            selectedDayBackgroundColor: '#F0A500', // Día seleccionado en naranja coral
-            selectedDayTextColor: '#fff', // Texto del día seleccionado en blanco
-            todayTextColor: '#F0A500', // Texto del día actual en naranja coral
-            textDayFontWeight: 'bold', // Texto de los días en negrita
-            textMonthFontSize: 20, // Tamaño de la fuente del mes
-            textMonthFontWeight: 'bold', // Mes en negrita
+            calendarBackground: '#1c1c1c',
+            dayTextColor: '#fff',
+            monthTextColor: '#fff',
+            arrowColor: '#F0A500',
+            selectedDayBackgroundColor: '#F0A500',
+            selectedDayTextColor: '#fff',
+            todayTextColor: '#F0A500',
+            textDayFontWeight: 'bold',
+            textMonthFontSize: 20,
+            textMonthFontWeight: 'bold',
           }}
           onDayPress={(day) => {
             setSelectedDate(day.dateString);
+            setModalVisible(true); // Mostrar el modal al seleccionar una fecha
           }}
           markedDates={{
+            ...events,
             [selectedDate]: {
               selected: true,
               marked: true,
-              selectedColor: '#F0A500', // Fondo del día seleccionado en naranja coral
+              selectedColor: '#F0A500',
             },
           }}
         />
       </View>
-      {selectedDate ? (
-        <Text style={styles.selectedDateText}>Fecha seleccionada: {selectedDate}</Text>
-      ) : null}
+
+      {/* Modal para agregar eventos */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Agregar Rutina</Text>
+            <Text style={styles.modalDate}>Fecha: {selectedDate}</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Descripción del ejercicio"
+              placeholderTextColor="#888"
+              value={eventText}
+              onChangeText={setEventText}
+            />
+            <Button title="Guardar Evento" onPress={handleAddEvent} color="#F0A500" />
+            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeButton}>
+              <Text style={styles.closeButtonText}>Cancelar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000', // Fondo negro para toda la pantalla
-    justifyContent: 'center', // Centrar verticalmente
-    alignItems: 'center', // Centrar horizontalmente
-    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#121212',
   },
   calendarContainer: {
-    borderRadius: 15, // Bordes redondeados para el calendario
+    borderRadius: 10,
     overflow: 'hidden',
-    elevation: 5, // Sombra en Android
-    shadowColor: '#fff', // Sombra en iOS
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 6,
   },
-  selectedDateText: {
-    color: '#F0A500', // Texto naranja coral
-    textAlign: 'center',
-    marginTop: 20,
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    width: 300,
+    padding: 20,
+    backgroundColor: '#1c1c1c',
+    borderRadius: 10,
+  },
+  modalTitle: {
     fontSize: 18,
-    fontWeight: 'bold', // Negrita para la fecha seleccionada
+    color: '#fff',
+    marginBottom: 10,
+    fontWeight: 'bold',
+  },
+  modalDate: {
+    fontSize: 16,
+    color: '#888',
+    marginBottom: 10,
+  },
+  input: {
+    height: 40,
+    borderColor: '#F0A500',
+    borderWidth: 1,
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    color: '#fff',
+  },
+  closeButton: {
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  closeButtonText: {
+    color: '#F0A500',
   },
 });
-
-
