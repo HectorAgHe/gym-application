@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ScrollView, StyleSheet, ActivityIndicator, Pressable, TextInput } from "react-native";
+import { View, Text, ScrollView, StyleSheet, ActivityIndicator, Pressable, TextInput,Image } from "react-native";
 import axios from "axios";
 import { ArrowIcon } from "../../components/Icons";
 import { useRouter } from "expo-router";
@@ -64,6 +64,7 @@ export default function Exercises() {
           {listExercises &&
             listExercises.map((exercise, index) => (
               <View key={index} style={styles.card}>
+                {/* <Image source={exercise.image}  style={{ width: 100, height: 100 }} /> */}
                 <Text style={styles.title}>{exercise.name}</Text>
                 <View style={styles.separator} />
                 {/* <Text style={styles.subTitle}>Difficulty: {exercise.difficulty}</Text>

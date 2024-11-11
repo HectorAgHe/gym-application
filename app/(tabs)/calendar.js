@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Modal, TextInput, Button, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
@@ -8,13 +9,22 @@ export default function MyCalendar() {
   const [eventText, setEventText] = useState('');
   const [events, setEvents] = useState({});
 
-  const handleAddEvent = () => {
+  const handleAddEvent = async () => {
     // Guardamos el evento en el estado
     setEvents({
       ...events,
       [selectedDate]: { selected: true, marked: true, dotColor: '#F0A500', event: eventText },
     });
-    setEventText('');
+   try {
+    await axios.post('http://localhost:4000/api/calendary',{
+      description: eventText,
+      date:selectedDate
+     })
+     console.log('Los datos se enviaron correctamente al servidor')
+   } catch (error) {
+    console.log('Ocurrio el siguiente error', error)
+   }
+    setEventText('')
     setModalVisible(false);
   };
 
@@ -65,7 +75,7 @@ export default function MyCalendar() {
               placeholder="Descripción del ejercicio"
               placeholderTextColor="#888"
               value={eventText}
-              onChangeText={setEventText}
+              onChangeText={(text)=>setEventText(text)}
             />
             <Button title="Guardar Evento" onPress={handleAddEvent} color="#F0A500" />
             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeButton}>
