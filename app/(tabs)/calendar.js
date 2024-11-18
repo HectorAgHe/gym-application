@@ -24,7 +24,7 @@ export default function MyCalendar() {
    } catch (error) {
     console.log('Ocurrio el siguiente error', error)
    }
-    setEventText('')
+    setEventText('');
     setModalVisible(false);
   };
 

@@ -2,21 +2,30 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { StyleSheet, View, Text, ActivityIndicator, ScrollView, Pressable } from "react-native";
 import { DeleteIcon } from "../components/Icons";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function Routines() {
     const [listExercises, setListExercises] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const getData = async () => {
+        const storedName = await AsyncStorage.getItem("authToken");
+        if(storedName){
             try {
-                const res = await axios.get("http://localhost:4000/api/excercises");
+                const res = await axios.get("http://localhost:4000/api/excercises",{
+                    headers:{
+                        authorization: "Bearer " + storedName,
+                    }
+                });
                 console.log(res.data)
                 setListExercises(res.data);
                 setIsLoading(false);
             } catch (error) {
-                console.log("Ocurrió el siguiente error", error);
+                console.log("Ocurrió el siguiente error", error.response);
             }
+        }else{
+            console.log('No se obtuvo ninguno token')
+        }
         };
         getData();
     }, []);

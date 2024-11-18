@@ -4,14 +4,20 @@ import { useLocalSearchParams } from 'expo-router';
 import { data } from '../../utils/data';
 import { AddIcon } from '../../components/Icons';
 import axios from 'axios';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function ExerciseDetails() {
     const [exerciseData, setExerciseData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [token, setToken] = useState(null)
     const { id } = useLocalSearchParams();
 
     useEffect(() => {
-        const loadData = () => {
+        const loadData = async () => {
+            const authToken = await AsyncStorage.getItem("authToken");
+            console.log(authToken)
+            setToken(authToken); 
+          
             setExerciseData(data.find((exercise) => exercise.id == id));
             setIsLoading(false);
         };
@@ -34,11 +40,20 @@ export default function ExerciseDetails() {
                 <View style={styles.icon} >
                 <Pressable onPress={async()=>{
                   try {
+                    const currentToken = await AsyncStorage.getItem("authToken");
+                   if(currentToken){
                     const res=await axios.post('http://localhost:4000/api/excercises',{
+                        headers:{
+                            authorization: "Bearer " + token,
+                        },
                         name:exerciseData.name,
                         description:exerciseData.description
-                    })
-                    console.log(res.data.message)
+                    },
+                )
+                   
+                   }else{
+                    console.log('No se proporciono ningun token')
+                   }
                   } catch (error) {
                     console.log('ocurrio el siguiente erro', error)
                   }
