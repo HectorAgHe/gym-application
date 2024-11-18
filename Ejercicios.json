@@ -1,0 +1,245 @@
+{
+    "Ejercicios": {
+        "1": {
+            "url":"./Ejercicios/TrenSuperior/Pecho/pectoralMedio/enMaquina/pressBancaPlano.gif",
+            "nombre": "Press de banca - Plano",
+            "descripcion": " El press de banca plano es un ejercicio de entrenamiento de fuerza que se realiza en una banca horizontal. Consiste en bajar una barra cargada de peso hasta el pecho y luego empujarla hacia arriba hasta que los brazos estén extendidos. Este ejercicio trabaja principalmente los músculos pectorales",
+            "instrucciones": [
+                {
+                    "1": "Preparación y posición: Acuéstate en la banca plana, apoyando bien la espalda y los pies en el suelo. Alinea los ojos debajo de la barra y asegúrate de que los hombros, la cabeza y los glúteos estén en contacto con la banca"
+                },
+                {
+                    "2": "Agarre: Toma la barra con un agarre un poco más ancho que el ancho de los hombros. Envuelve bien los pulgares para asegurar la barra y mantener el control."
+                },
+                {
+                    "3": "Desciende la barra: Inhala y baja la barra lentamente hacia el pecho, manteniendo los codos en un ángulo de aproximadamente 45 grados con respecto al torso. Baja la barra hasta que esté a la altura de los pezones o ligeramente por encima."
+                },
+                {
+                    "4": "Empuje: Exhala y empuja la barra hacia arriba de forma controlada, estirando los brazos hasta que queden casi rectos (sin bloquear los codos por completo)."
+                },
+                {
+                    "5": "Repetición: Repite el movimiento el número deseado de veces, manteniendo el control y la técnica en cada repetición."
+                }
+            
+            ],
+            "recomendacion":"3x8"
+        },
+        "2":{
+            "url": "./Ejercicios/TrenSuperior/Pecho/pectoralMedio/enMaquina/pressSentadoM1.gif",
+            "nombre":"Press de banca en maquina - Sentado",
+            "descripcion": "El press de banca en máquina sentado es un ejercicio de fuerza que trabaja principalmente los músculos del pecho, los tríceps y los deltoides. Se realiza sentado en una máquina, empujando las manijas hacia adelante desde la altura del pecho, manteniendo la espalda apoyada en el respaldo. Es ideal para principiantes, ya que guía el movimiento y reduce el riesgo de lesiones.",
+            "instrucciones":[
+                {"1": [{"Ajusta el asiento": "Ajusta el asiento para que las manijas queden a la altura de tu pecho."}]},
+                {"2": [{"Siéntate": "Siéntate con la espalda recta, apoyada completamente en el respaldo."}]},
+                {"3": [{"Colocación": "Coloca las manos en las manijas con un agarre prono firme y los codos ligeramente flexionados."}]},
+                {"4": [{"Empuja las manijas": "Empuja hacia adelante hasta extender casi por completo los brazos, sin bloquear los codos."}]},
+                {"5": [{"Regreso": "Regresa lentamente a la posición inicial controlando el movimiento."}]}
+
+            ],
+            "recomendacion":"3x8"
+        }, 
+        "3":{
+            "url": "./Ejercicios/TrenSuperior/Pecho/pectoralMedio/enMaquina/pressSentadoM2.gif",
+            "nombre":"Press de banca en maquina -  Sentado ",
+            "descripcion": "Otra maquina para el press de banca en máquina sentado es un ejercicio de fuerza que trabaja principalmente los músculos del pecho, los tríceps y los deltoides. Se realiza sentado en una máquina, empujando las manijas hacia adelante desde la altura del pecho, manteniendo la espalda apoyada en el respaldo. Es ideal para principiantes, ya que guía el movimiento y reduce el riesgo de lesiones.",
+            "instrucciones":[
+                {"1": "Ajusta la máquina: Ajusta el asiento de la máquina para que las manijas estén alineadas con la altura de tu pecho cuando estés sentado. Asegúrate de que los pies estén firmemente apoyados en el suelo y que tu espalda esté completamente recta contra el respaldo."},
+                {"2": "Posición de las manos y los codos: Sujeta las manijas con un agarre neutral (palmas viendose), asegurándote de que tus manos estén alineadas con los codos, los cuales deben estar ligeramente flexionados y no completamente abiertos hacia los lados. Los codos deben estar a la altura del pecho al inicio del movimiento."},
+                {"3": "Postura correcta: Mantén los hombros hacia atrás, el pecho ligeramente elevado y la espalda bien apoyada en el respaldo. Evita arquear la espalda o encorvarte durante el ejercicio para evitar lesiones."},
+                {"4": "Movimiento de empuje: Inhala y, mientras exhalas, empuja las manijas hacia adelante, extendiendo los brazos hacia el frente sin bloquear los codos al final del movimiento. La presión debe concentrarse en el pecho."},
+                {"5": "Regreso controlado: Una vez que los brazos estén casi extendidos, regresa lentamente las manijas hacia la posición inicial mientras inhalas, manteniendo el control y la tensión en los músculos del pecho. No dejes que el peso caiga de golpe para evitar lesiones."}
+
+            ],
+            "recomendacion":"3x10 incrementando el peso en cada serie hasta llegar a tu peso maximo soportado"
+        } ,
+        "4":{
+            "url": "./Ejercicios/TrenSuperior/Pecho/pectoralMedio/enMaquina/pressSentadoM3.gif",
+            "nombre":"Aperturas en maquina - contractor de pecho",
+            "descripcion": "Las aperturas en máquina - contractor de pecho son un ejercicio que se enfoca en trabajar los músculos del pectoral mayor y medio. Se realiza sentado en una máquina, juntando los brazos desde los lados hacia el centro del pecho en un movimiento de 'abrazo'. Es ideal para aislar los pectorales y mejorar su definición.",
+            "instrucciones":[
+                {"1": "Ajusta la máquina: Coloca el asiento de la máquina a la altura adecuada para que las almohadillas estén alineadas con el nivel de tus brazos, justo por debajo de tus codos. Ajusta también el peso que utilizarás para el ejercicio."},
+                {"2": "Posición inicial: Siéntate en la máquina con la espalda completamente apoyada en el respaldo. Mantén los pies firmemente en el suelo y los codos ligeramente doblados mientras sujetas las manijas o las almohadillas con ambas manos. Los brazos deben estar extendidos hacia los lados, alineados con tu torso."},
+                {"3": "Alinea los codos y hombros: Mantén los hombros hacia atrás y el pecho ligeramente elevado para evitar encorvarte durante el movimiento. Los codos deben estar ligeramente hacia abajo y no completamente abiertos, para proteger las articulaciones del hombro."},
+                {"4": "Movimiento de cierre: Inhala y, mientras exhalas, lleva ambas manijas hacia el centro del pecho, como si estuvieras cerrando un abrazo. Asegúrate de apretar los pectorales al final del movimiento, concentrando el esfuerzo en los músculos del pecho."},
+                {"5": "Regreso controlado: Inhala mientras regresas lentamente las manijas a la posición inicial, asegurándote de mantener la tensión en los músculos del pecho en todo momento. Evita que las pesas choquen entre sí al final del movimiento."}
+
+            ],
+            "recomendacion":"3x8"
+        }, 
+       
+        "5":{
+            "url":"./Ejercicios/TrenSuperior/Pecho/pectoralMedio/enMaquina/jalonCablesRecto.gif",
+            "nombre":"Jalon en polea de pie en maquina - recto",           
+            "descripcion": " El cruce de poleas es un ejercicio de aislamiento que trabaja principalmente los músculos del pecho, en especial el pectoral mayor y algo del medio. Se realiza utilizando dos cables de polea en una máquina, llevando los brazos frente al cuerpo en un movimiento de aducción. Es excelente para tonificar y definir el pecho",
+            "instrucciones":[
+                {"1": "Ajusta las poleas: Coloca las poleas en la máquina a la altura a nivel de tus hombros. Ajusta el peso adecuado para el ejercicio. Colócate en el centro de la máquina y toma un agarre en cada polea."},
+                {"2": "Posición inicial: Da un paso hacia adelante, manteniendo una ligera inclinación hacia el frente (con el pecho hacia adelante y los pies firmemente apoyados en el suelo). Da un paso atrás para que los cables queden ligeramente tensos. Mantén una postura erguida, con el pecho elevado y los hombros atrás. Los codos deben estar ligeramente doblados y relajados."},
+                {"3": "Agarre y preparación: Sujeta las manijas de las poleas con las palmas hacia abajo (pronado) Asegúrate de que los brazos estén extendidos hacia los lados, creando una ligera tensión en los cables."},
+                {"4": "Movimiento frontal: Inhala y, mientras exhalas, lleva ambas manos hacia el frente, llevando las poleas por delante de tu cuerpo en un movimiento controlado. Los codos deben mantenerse ligeramente doblados durante todo el ejercicio. Siente cómo se activan los pectorales al juntar las manos frente a ti."},
+                {"5": "Contracción y pausa: Al llegar al cruce, aprieta los músculos del pecho en la parte más baja del movimiento, manteniendo la posición durante un breve momento para maximizar la contracción."},
+                {"6": "Regresa a la posición inicial: Inhala mientras controlas el movimiento de regreso, abriendo los brazos lentamente hasta que los cables vuelvan a estar alineados con tus hombros. Mantén siempre la tensión en los pectorales. Repite"}
+            ],
+            "recomendacion":"3x8"
+        }, 
+        "6":{
+            "url":"./Ejercicios/TrenSuperior/Pecho/pectoralMedio/enMaquina/aperturasPoleaUnila.gif",
+            "nombre":"Apertura unilateral - acostado",
+            "descripcion": "La apertura unilateral acostado es un ejercicio que se enfoca en los músculos del pecho, especialmente en el pectoral mayor y medio, además de trabajar los deltoides y los músculos estabilizadores del tronco. Se realiza en una posición acostada, utilizando una polea en un solo brazo a la vez, lo que ayuda a trabajar cada lado del cuerpo de forma independiente, tambien puede usarse una mancuerna.",
+            "instrucciones":[
+
+                {"1": "Posición inicial: Acuéstate en un banco plano con los pies firmemente apoyados en el suelo. Sujeta una polea con una mano, manteniendo el brazo extendido horizontal. El otro brazo debe descansar al lado del cuerpo o sobre el banco para mayor estabilidad."},
+                {"2": "Agarre y postura: Mantén el brazo que sostiene la mancuerna ligeramente doblado en el codo, sin bloquearlo. Asegúrate de que tu torso esté firme y la espalda bien apoyada en el banco."},
+                {"3": "Movimiento hacia arriba: Exhala mientras jalas la polea hacia arriba, llegando al angulo de 90° con respecto a tu pecho de forma controlada."},
+                {"4": "Movimiento: Aprieta el pectoral al final del movimiento para maximizar la activación muscular"},
+                {"5": "Repeticiones: Completa el número de repeticiones planificadas para un brazo y luego cambia de lado, repitiendo el ejercicio con el otro brazo y mismo numero."}
+
+            ],
+            "recomendacion":"4x4"
+        } ,
+        "7":{
+            "url":"./Ejercicios/TrenSuperior/Pecho/pectoralMedio/enMaquina/jalonCables.gif",
+            "nombre":"Jalon de cables(polea) en maquina - sentado",
+            "descripcion": "El jalón de cables (polea) en máquina - sentado para pecho es un ejercicio que trabaja principalmente los músculos del pecho, en especial la parte superior y media del pectoral. Se realiza en una máquina de poleas, sentado, y permite un movimiento de contracción hacia el centro del pecho, imitando un 'abrazo'. Este ejercicio también involucra los deltoides y los tríceps de manera secundaria.",
+            "instrucciones": [
+                {"1": "Ajusta la máquina y el asiento: Ajusta el asiento de la máquina para que las poleas queden a la altura de tus manos cuando estés sentado. Ajusta también el peso adecuado para que el ejercicio sea desafiante, pero puedas realizarlo con buena técnica."},
+                {"2": "Posición inicial: Siéntate con la espalda recta y los pies firmemente apoyados en el suelo. Sujeta las manijas de la polea con ambas manos, con los codos ligeramente doblados y los brazos extendidos hacia los lados, alineados con el torso."},
+                {"3": "Agarre y postura: Mantén los hombros hacia atrás y el pecho ligeramente elevado, asegurándote de que no estés arqueando la espalda. Los codos deben mantenerse ligeramente flexionados durante todo el ejercicio."},
+                {"4": "Jalón hacia el centro: Inhala y, mientras exhalas, tira de las manijas hacia el centro de tu pecho, como si intentaras juntar los brazos en un movimiento de abrazo. Mantén los codos dirigidos hacia los lados, sin abrirlos demasiado."},
+                {"5": "Regreso controlado: Una vez que las manijas estén cerca de tu pecho, comienza a regresar lentamente a la posición inicial, asegurándote de mantener la tensión en los músculos pectorales y controlando el movimiento. Evita que las pesas caigan de golpe."}    
+
+            ],            
+            "recomendacion":"4x8"
+        }, 
+        "8":{
+            "url":"./Ejercicios/TrenSuperior/Pecho/pectoralMedio/enMaquina/jalonCablesPie.gif",
+            "nombre":"Cruce de poleas - de pie",
+            "descripcion": "El cruce de poleas es un ejercicio de aislamiento que trabaja principalmente los músculos del pecho, en especial el pectoral mayor y algo del medio. Se realiza utilizando dos cables de polea en una máquina, cruzando los brazos frente al cuerpo en un movimiento de aducción. Es excelente para tonificar y definir el pecho",
+            "instrucciones":[
+                {"1": "Ajusta las poleas: Coloca las poleas en la máquina a la altura más alta. Ajusta el peso adecuado para el ejercicio. Colócate en el centro de la máquina y toma un agarre en cada polea."},
+                {"2": "Posición inicial: Da un paso hacia adelante, manteniendo una ligera inclinación hacia el frente (con el pecho hacia adelante y los pies firmemente apoyados en el suelo). Da un paso atrás para que los cables queden ligeramente tensos. Mantén una postura erguida, con el pecho elevado y los hombros atrás. Los codos deben estar ligeramente doblados y relajados."},
+                {"3": "Agarre y preparación: Sujeta las manijas de las poleas con las palmas hacia abajo (agarre neutro o pronado) o hacia adentro si prefieres un agarre supinado (palmas enfrentadas). Asegúrate de que los brazos estén extendidos hacia los lados, creando una ligera tensión en los cables."},
+                {"4": "Movimiento de cruce: Inhala y, mientras exhalas, lleva ambas manos hacia el frente, cruzando las poleas por delante de tu cuerpo en un movimiento controlado. Los codos deben mantenerse ligeramente doblados durante todo el ejercicio. Siente cómo se activan los pectorales al juntar las manos frente a ti."},
+                {"5": "Contracción y pausa: Al llegar al cruce, aprieta los músculos del pecho en la parte más baja del movimiento, manteniendo la posición durante un breve momento para maximizar la contracción."},
+                {"6": "Regresa a la posición inicial: Inhala mientras controlas el movimiento de regreso, abriendo los brazos lentamente hasta que los cables vuelvan a estar alineados con tus hombros. Mantén siempre la tensión en los pectorales. Repite"}
+
+            ],
+            "recomendacion":"4x8. Recuerda no utilizar el impulso corporal al realizar el ejercicio ya que reduce la tension muscular, exigencia y control"
+        },
+
+
+
+
+
+
+        "9":{
+            "nombre":"",
+            "descripcion": "",
+            "instrucciones":[
+                {"1": ""},
+                {"2": ""},
+                {"3": ""},
+                {"4": ""},
+                {"5": ""}
+
+            ],
+            "recomendacion":"1"
+        },
+        "10":{
+            "nombre":"",
+            "descripcion": "",
+            "instrucciones":[
+                {"1": ""},
+                {"2": ""},
+                {"3": ""},
+                {"4": ""},
+                {"5": ""}
+
+            ],
+            "recomendacion":"1"
+        },
+        "11":{
+            "nombre":"",
+            "descripcion": "",
+            "instrucciones":[
+                {"1": ""},
+                {"2": ""},
+                {"3": ""},
+                {"4": ""},
+                {"5": ""}
+
+            ],
+            "recomendacion":"1"
+        },
+        "12":{
+            "nombre":"",
+            "descripcion": "",
+            "instrucciones":[
+                {"1": ""},
+                {"2": ""},
+                {"3": ""},
+                {"4": ""},
+                {"5": ""}
+
+            ],
+            "recomendacion":"1"
+        },
+        "13":{
+            "nombre":"",
+            "descripcion": "",
+            "instrucciones":[
+                {"1": ""},
+                {"2": ""},
+                {"3": ""},
+                {"4": ""},
+                {"5": ""}
+
+            ],
+            "recomendacion":"1"
+        },
+        "14":{
+            "nombre":"",
+            "descripcion": "",
+            "instrucciones":[
+                {"1": ""},
+                {"2": ""},
+                {"3": ""},
+                {"4": ""},
+                {"5": ""}
+
+            ],
+            "recomendacion":"1"
+        },
+        "15":{
+            "nombre":"",
+            "descripcion": "",
+            "instrucciones":[
+                {"1": ""},
+                {"2": ""},
+                {"3": ""},
+                {"4": ""},
+                {"5": ""}
+
+            ],
+            "recomendacion":"1"
+        },
+        "falta":{
+            "url":"./Ejercicios/TrenSuperior/Pecho/pectoralMedio/enMaquina/pressInclinado",
+            "nombre":"Press inclinado con maquina",
+            "descripcion": "El press inclinado en máquina es un ejercicio que trabaja principalmente la parte superior del pecho (pectorales mayores), los deltoides anteriores y los tríceps. Se realiza en una máquina diseñada con un ángulo inclinado que simula el movimiento del press inclinado con barra o mancuernas, ofreciendo mayor estabilidad y control.",
+            "instrucciones":[
+                {"1": ""},
+                {"2": ""},
+                {"3": ""},
+                {"4": ""},
+                {"5": ""}
+
+            ],
+            "recomendacion":"4x8"
+        }
+         
+
+
+
+
+      }
+}
