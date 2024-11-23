@@ -9,22 +9,24 @@ export default function Routines() {
 
     useEffect(() => {
         const getData = async () => {
-        const storedName = await AsyncStorage.getItem("authToken");
-        if(storedName){
+        const currentToken = await AsyncStorage.getItem("authToken");
+        if(!currentToken){
+           console.log('No se encontro ningun token')
+           return
+        }else{
             try {
-                const res = await axios.get("http://localhost:4000/api/excercises",{
-                    headers:{
-                        authorization: "Bearer " + storedName,
-                    }
-                });
+                const config = {
+                    headers: {
+                      Authorization: `Bearer ${currentToken}`,
+                    },
+                  };
+                const res = await axios.get("http://localhost:4000/api/excercises", config);
                 console.log(res.data)
                 setListExercises(res.data);
                 setIsLoading(false);
             } catch (error) {
                 console.log("Ocurrió el siguiente error", error.response);
             }
-        }else{
-            console.log('No se obtuvo ninguno token')
         }
         };
         getData();

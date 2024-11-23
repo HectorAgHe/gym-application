@@ -129,20 +129,23 @@ const styles = StyleSheet.create({
     inputUser:{
         width:250,
         height:35,
-        borderWidth:2,
-        borderColor:"#f4f2ee",
-        borderRadius:10,
         textAlign: 'center',
-        backgroundColor:"#f4f2ee"
+        borderBottomWidth: 2, // Solo el borde inferior
+        borderBottomColor: "#ffffff", // Color blanco para el borde inferior
+        textAlign: "center",
+        color:"white",
+        backgroundColor: "transparent",// Elimina el fondos
+        outlineStyle:"none" 
     },
     inputPassword:{
         width:250,
         height:35,
-        borderWidth:2,
-        borderColor:'#f4f2ee',
-        borderRadius:10,
-        textAlign: 'center',
-        backgroundColor:"#f4f2ee"
+        borderBottomWidth: 2, // Solo el borde inferior
+        borderBottomColor: "#ffffff", // Color blanco para el borde inferior
+        textAlign: "center",
+        color:"white",
+        backgroundColor: "transparent",// Elimina el fondos
+        outlineStyle:"none" 
     },
     containerRegister:{
         marginTop:20,

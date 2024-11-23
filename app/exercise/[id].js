@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator, Pressable } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator, Pressable,Image } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
-import { data } from '../../utils/data';
+// import { data } from '../../utils/data';
 import { AddIcon } from '../../components/Icons';
 import axios from 'axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import data from "../../Ejercicios.json"
 export default function ExerciseDetails() {
     const [exerciseData, setExerciseData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [token, setToken] = useState(null)
+    // const [token, setToken] = useState(null)
     const { id } = useLocalSearchParams();
 
     useEffect(() => {
         const loadData = async () => {
-            const authToken = await AsyncStorage.getItem("authToken");
-            console.log(authToken)
-            setToken(authToken); 
+            // const authToken = await AsyncStorage.getItem("authToken");
+            // console.log(authToken)
+            // setToken(authToken); 
           
-            setExerciseData(data.find((exercise) => exercise.id == id));
+            setExerciseData(data.ejercicios.find((exercise) => exercise.id == id));
             setIsLoading(false);
         };
         loadData();
@@ -35,31 +35,42 @@ export default function ExerciseDetails() {
     return (
         <View style={styles.container}>
             <View style={styles.content}>
-                <Text style={styles.name}>{exerciseData.name}</Text>
-                <Text style={styles.description}>{exerciseData.description}</Text>
+                <Text style={styles.name}>{exerciseData.nombre}</Text>
+                <Image source={exerciseData.url}  style={{ width: 100, height: 100 }} />
                 <View style={styles.icon} >
-                <Pressable onPress={async()=>{
-                  try {
-                    const currentToken = await AsyncStorage.getItem("authToken");
-                   if(currentToken){
-                    const res=await axios.post('http://localhost:4000/api/excercises',{
-                        headers:{
-                            authorization: "Bearer " + token,
-                        },
-                        name:exerciseData.name,
-                        description:exerciseData.description
-                    },
-                )
-                   
-                   }else{
-                    console.log('No se proporciono ningun token')
-                   }
-                  } catch (error) {
-                    console.log('ocurrio el siguiente erro', error)
-                  }
-                }} >
-                <AddIcon color='orange' />
-                </Pressable>
+                <Pressable
+  onPress={async () => {
+    try {
+      // Obtén el token almacenado en AsyncStorage
+      const currentToken = await AsyncStorage.getItem("authToken");
+
+      if (!currentToken) {
+        console.log("No se encontró ningún token");
+        return;
+      }
+
+      // Configura los encabezados con el token
+      const config = {
+        headers: {
+          Authorization: `Bearer ${currentToken}`,
+        },
+      };
+
+      // Realiza la solicitud POST
+      const res = await axios.post(
+        "http://localhost:4000/api/excercises",
+        exerciseData,
+        config
+      );
+
+      console.log("El ejercicio se guardo con exito")
+    } catch (error) {
+      console.log("Ocurrió el siguiente error:", error.message);
+    }
+  }}
+>
+  <AddIcon color="orange" />
+</Pressable>
                 </View>
             </View>
         </View>

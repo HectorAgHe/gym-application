@@ -4,6 +4,7 @@ import axios from "axios";
 import { ArrowIcon } from "../../components/Icons";
 import { useRouter } from "expo-router";
 import { data } from "../../utils/data";
+import exercisesData from "../../Ejercicios.json"
 
 export default function Exercises() {
   // const [data, setData] = useState(null);
@@ -23,8 +24,8 @@ export default function Exercises() {
       //       "X-Api-Key": "G4k19+PbzCvNOhWGjTFX8Q==s7fuD6DMdeiAfseD",
       //     },
       //   });
-        setAllExercises(data) //
-        setListExercises(data)
+        setAllExercises(exercisesData) //
+        setListExercises(exercisesData)
         setIsLoading(false);
       //   console.log(res.data);
       // } catch (error) {
@@ -33,6 +34,19 @@ export default function Exercises() {
     };
     getData();
   }, []);
+
+  //  useEffect(()=>{
+  //  if(!isLoading && query){
+  //   let endLoad = true
+  //   const filterData = allExercises.ejercicios.filter((item)=>{
+  //     return item.nombre === query
+  //   })
+  //   endLoad= false
+  //   if(!endLoad){
+  //     setListExercises(filterData)
+  //   }
+  //  }
+  //  },[query])
 
   return (
     
@@ -44,11 +58,12 @@ export default function Exercises() {
           placeholderTextColor="#aaa"
           onChangeText={(text)=>{
             setQuery(text)
+           
           }}
         />
         <Pressable style={styles.searchButton} onPress={()=>{
-          const filterData = allExercises.filter((item)=>{
-            return item.name === query
+          const filterData = allExercises.ejercicios.filter((item)=>{
+            return item.nombre === query
           })
           setListExercises(filterData)
         }} >
@@ -62,10 +77,11 @@ export default function Exercises() {
       ) : (
         <ScrollView contentContainerStyle={styles.content}>
           {listExercises &&
-            listExercises.map((exercise, index) => (
-              <View key={index} style={styles.card}>
-                {/* <Image source={exercise.image}  style={{ width: 100, height: 100 }} /> */}
-                <Text style={styles.title}>{exercise.name}</Text>
+            listExercises.ejercicios.map((exercise, index) => (
+              <View key={exercise.id} style={styles.card}>
+                <Image source={exercise.url}  style={{ width: 100, height: 100 }} />
+                <Text style={styles.title}>{exercise.nombre}</Text>
+                <Text style={styles.descripcion} >{exercise.descripcion}</Text>
                 <View style={styles.separator} />
                 {/* <Text style={styles.subTitle}>Difficulty: {exercise.difficulty}</Text>
                 <Text style={styles.description}>Targeted Muscle: {exercise.muscle}</Text>
@@ -113,6 +129,12 @@ const styles = StyleSheet.create({
     fontSize: 20, // Texto más grande para el título
     fontWeight: "bold",
     color: "orange", // Título en color naranja para destacar
+    marginBottom: 10,
+  },
+  descripcion:{
+    fontSize: 15, // Texto más grande para el título
+    fontWeight: "bold",
+    color: "white", // Título en color naranja para destacar
     marginBottom: 10,
   },
   subTitle: {

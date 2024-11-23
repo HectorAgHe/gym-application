@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Modal, TextInput, Button, TouchableOpacity } from 'react-native';
 import { Calendar } from 'react-native-calendars';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function MyCalendar() {
   const [selectedDate, setSelectedDate] = useState('');
@@ -15,11 +16,21 @@ export default function MyCalendar() {
       ...events,
       [selectedDate]: { selected: true, marked: true, dotColor: '#F0A500', event: eventText },
     });
+    const currentToken = await AsyncStorage.getItem("authToken");
+    if(!currentToken){
+      console.log('No hay ningun token')
+      return
+    }
+    const config = {
+      headers: {
+        Authorization: `Bearer ${currentToken}`,
+      },
+    };
    try {
     await axios.post('http://localhost:4000/api/calendary',{
       description: eventText,
       date:selectedDate
-     })
+     }, config)
      console.log('Los datos se enviaron correctamente al servidor')
    } catch (error) {
     console.log('Ocurrio el siguiente error', error)

@@ -63,7 +63,7 @@ export default function Home() {
           <Pressable style={styles.navButton} onPress={()=>{
             router.push('/routines')
           }} >
-            <Text style={styles.navButtonText}>Mis rutinas</Text>
+            <Text style={styles.navButtonText}>Rutinas favoritas</Text>
           </Pressable>
           <Pressable style={styles.navButton} onPress={()=>{
             router.push('/schedule')
