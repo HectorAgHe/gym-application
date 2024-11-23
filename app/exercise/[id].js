@@ -5,7 +5,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { AddIcon } from '../../components/Icons';
 import axios from 'axios';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import data from "../../Ejercicios.json"
+import ejerciciosData from '../../Ejercicios';
 export default function ExerciseDetails() {
     const [exerciseData, setExerciseData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +18,7 @@ export default function ExerciseDetails() {
             // console.log(authToken)
             // setToken(authToken); 
           
-            setExerciseData(data.ejercicios.find((exercise) => exercise.id == id));
+            setExerciseData(ejerciciosData.ejercicios.find((exercise) => exercise.id == id));
             setIsLoading(false);
         };
         loadData();
@@ -35,8 +35,10 @@ export default function ExerciseDetails() {
     return (
         <View style={styles.container}>
             <View style={styles.content}>
+                <Image source={exerciseData.url}  style={{ width: 200, height: 200 }} />
                 <Text style={styles.name}>{exerciseData.nombre}</Text>
-                <Image source={exerciseData.url}  style={{ width: 100, height: 100 }} />
+                <Text style={styles.description} >{exerciseData.descripcion}</Text>
+               
                 <View style={styles.icon} >
                 <Pressable
   onPress={async () => {
@@ -80,7 +82,7 @@ export default function ExerciseDetails() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#000',
+        backgroundColor: '#f4f2ee',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
@@ -96,13 +98,10 @@ const styles = StyleSheet.create({
     },
     content: {
         alignItems: 'center',
-        backgroundColor: '#1A1A1A', // Fondo oscuro detrás del texto para destacar
+        backgroundColor: 'white', // Fondo oscuro detrás del texto para destacar
         padding: 20,
         borderRadius: 10,
-        shadowColor: '#FFA500',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.5,
-        shadowRadius: 10,
+   
     },
     name: {
         color: '#FFA500', // Naranja para el nombre del ejercicio
@@ -115,7 +114,7 @@ const styles = StyleSheet.create({
         textShadowRadius: 4,
     },
     description: {
-        color: '#FFF', // Blanco para la descripción
+        color: 'black', // Blanco para la descripción
         fontSize: 18,
         lineHeight: 26,
         textAlign: 'center',

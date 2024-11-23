@@ -4,7 +4,7 @@ import axios from "axios";
 import { ArrowIcon } from "../../components/Icons";
 import { useRouter } from "expo-router";
 import { data } from "../../utils/data";
-import exercisesData from "../../Ejercicios.json"
+import ejerciciosData from "../../Ejercicios";
 
 export default function Exercises() {
   // const [data, setData] = useState(null);
@@ -24,8 +24,8 @@ export default function Exercises() {
       //       "X-Api-Key": "G4k19+PbzCvNOhWGjTFX8Q==s7fuD6DMdeiAfseD",
       //     },
       //   });
-        setAllExercises(exercisesData) //
-        setListExercises(exercisesData)
+        setAllExercises(ejerciciosData) //
+        setListExercises(ejerciciosData)
         setIsLoading(false);
       //   console.log(res.data);
       // } catch (error) {
@@ -79,7 +79,7 @@ export default function Exercises() {
           {listExercises &&
             listExercises.ejercicios.map((exercise, index) => (
               <View key={exercise.id} style={styles.card}>
-                <Image source={exercise.url}  style={{ width: 100, height: 100 }} />
+                {/* <Image source={exercise.url}  style={{ width: 100, height: 100 }} /> */}
                 <Text style={styles.title}>{exercise.nombre}</Text>
                 <Text style={styles.descripcion} >{exercise.descripcion}</Text>
                 <View style={styles.separator} />
