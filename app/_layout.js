@@ -9,6 +9,6 @@
 //           <Stack>
 //             <Stack.Screen name="(tabs)"  />
 //           </Stack>
-//         </View>
+//         {/* </View> */}
 //     )
 // }

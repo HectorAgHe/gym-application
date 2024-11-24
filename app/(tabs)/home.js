@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { useRouter } from "expo-router";
+import { useFocusEffect } from 'expo-router';
 
 export default function Home() {
   const [userName, setUserName] = useState("");
   const [isLoading,setIsLoading] = useState(true)
+  const[completedEvents,setCompletedEvents] = useState([])
   const router = useRouter()
 
   useEffect(() => {
@@ -30,6 +32,33 @@ export default function Home() {
     loadUserData();
   }, []);
 
+  useFocusEffect(
+    useCallback(() => {
+      const getCompletedEvents = async () => {
+        try {
+          const currentToken = await AsyncStorage.getItem("authToken");
+          if (!currentToken) {
+            console.log("No se encontró ningún token");
+            return;
+          }
+
+          const config = {
+            headers: {
+              Authorization: `Bearer ${currentToken}`,
+            },
+          };
+
+          const res = await axios.get("http://localhost:4000/api/completed", config);
+          setCompletedEvents(res.data);
+        } catch (error) {
+          console.error("Ocurrió el siguiente error:", error);
+        }
+      };
+
+      getCompletedEvents();
+    }, []) // Se ejecuta cada vez que la pantalla recibe el enfoque
+  );
+
   return (
     <View style={styles.mainContainer}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -48,8 +77,8 @@ export default function Home() {
           <Text style={styles.sectionTitle}>Tu Progreso</Text>
           <View style={styles.progressContainer}>
             <View style={styles.progressCard}>
-              <Text style={styles.progressNumber}>0</Text>
-              <Text style={styles.progressLabel}>Trabajos este mes</Text>
+              <Text style={styles.progressNumber}>{completedEvents ? completedEvents.length : '0'}</Text>
+              <Text style={styles.progressLabel}>Ejercicios completados</Text>
             </View>
             <View style={styles.progressCard}>
               <Text style={styles.progressNumber}>0</Text>
@@ -66,9 +95,9 @@ export default function Home() {
             <Text style={styles.navButtonText}>Rutinas favoritas</Text>
           </Pressable>
           <Pressable style={styles.navButton} onPress={()=>{
-            router.push('/schedule')
+            router.push('/completedExercises')
           }} >
-            <Text style={styles.navButtonText}>Agenda una clase</Text>
+            <Text style={styles.navButtonText}>Ejercicios completados</Text>
           </Pressable>
         </View>
       </ScrollView>

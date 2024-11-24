@@ -42,4 +42,14 @@ export const AddIcon=(props)=>{
 export const DeleteIcon=(props)=>{
     return <AntDesign name="delete" size={40} color="orange" />
 }
+export const CheckIcon=(props)=>{
+   return <AntDesign name="check" size={24} color="orange" />
+}
+
+export const FitnessIcon = (props)=>{
+    return <MaterialIcons name="fitness-center" size={24} color="orange" />
+}
+export const ArrowBack = (props)=>{
+    return <AntDesign name="arrowleft" size={35} color="orange" />
+}
 

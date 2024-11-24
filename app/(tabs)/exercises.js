@@ -35,18 +35,7 @@ export default function Exercises() {
     getData();
   }, []);
 
-  //  useEffect(()=>{
-  //  if(!isLoading && query){
-  //   let endLoad = true
-  //   const filterData = allExercises.ejercicios.filter((item)=>{
-  //     return item.nombre === query
-  //   })
-  //   endLoad= false
-  //   if(!endLoad){
-  //     setListExercises(filterData)
-  //   }
-  //  }
-  //  },[query])
+  
 
   return (
     
@@ -63,9 +52,11 @@ export default function Exercises() {
         />
         <Pressable style={styles.searchButton} onPress={()=>{
           const filterData = allExercises.ejercicios.filter((item)=>{
-            return item.nombre === query
+            return item.nombre.toLowerCase().startsWith(query.toLowerCase());
           })
-          setListExercises(filterData)
+          setTimeout(() => {
+            setListExercises({ejercicios:filterData})
+          }, 3000);
         }} >
           <Text style={styles.searchButtonText}>Buscar</Text>
         </Pressable>

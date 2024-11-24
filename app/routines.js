@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 import { StyleSheet, View, Text, ActivityIndicator, ScrollView, Pressable } from "react-native";
 import { DeleteIcon } from "../components/Icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ArrowBack } from "../components/Icons";
+import { useRouter } from "expo-router";
 export default function Routines() {
     const [listExercises, setListExercises] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    const router = useRouter()
 
     useEffect(() => {
         const getData = async () => {
@@ -41,9 +45,17 @@ export default function Routines() {
     }
 
     return (
-       <ScrollView>
+       
          <View style={styles.container}>
-            {listExercises.length === 0 ? (
+           <ScrollView>
+           <View style={styles.iconArrowBack} >
+            <Pressable onPress={()=>{
+                router.push('/home')
+            }} >
+            <ArrowBack color='orange' />
+            </Pressable>
+        </View>
+           {listExercises.length === 0 && !isLoading ? (
                 <Text style={styles.noDataText}>¡Aún no tienes alguna rutina agregada!</Text>
             ) : (
                 <View style={styles.listContainer}>
@@ -73,12 +85,16 @@ export default function Routines() {
                     ))}
                 </View>
             )}
+           </ScrollView>
         </View>
-       </ScrollView>
+       
     );
 }
 
 const styles = StyleSheet.create({
+    iconArrowBack:{
+        marginTop:20
+      },
     container: {
         flex: 1,
         backgroundColor: "#121212",
