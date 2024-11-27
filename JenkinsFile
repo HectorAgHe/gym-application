@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        NODE_VERSION = '20.17.0' // Cambia según la versión que uses para React Native
+        NODE_VERSION = '20' // Cambia según la versión que uses para React Native
     }
     stages {
         stage('Checkout') {
@@ -25,13 +25,24 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                sh 'npm test'
+                sh 'npm test -- --coverage'
+            }
+        }
+        stage('Build App') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+        stage('Archive Coverage Reports') {
+            steps {
+                // Archiva el reporte de cobertura si Jest genera un archivo HTML o similar
+                archiveArtifacts artifacts: 'coverage/**', allowEmptyArchive: true
             }
         }
     }
     post {
         success {
-            echo 'Pipeline ejecutado con éxito.'
+            echo 'Pipeline ejecutado con éxito. Aplicación construida y cobertura generada.'
         }
         failure {
             echo 'El pipeline falló.'
