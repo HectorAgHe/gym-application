@@ -78,7 +78,7 @@ export default function Home() {
           <View style={styles.progressContainer}>
             <View style={styles.progressCard}>
               <Text style={styles.progressNumber}>{completedEvents ? completedEvents.length : '0'}</Text>
-              <Text style={styles.progressLabel}>Ejercicios completados</Text>
+              <Text style={styles.progressLabel}>Dias de rutina completados</Text>
             </View>
             <View style={styles.progressCard}>
               <Text style={styles.progressNumber}>0</Text>
@@ -92,12 +92,12 @@ export default function Home() {
           <Pressable style={styles.navButton} onPress={()=>{
             router.push('/routines')
           }} >
-            <Text style={styles.navButtonText}>Rutinas favoritas</Text>
+            <Text style={styles.navButtonText}>Ejercicios favoritos</Text>
           </Pressable>
           <Pressable style={styles.navButton} onPress={()=>{
             router.push('/completedExercises')
           }} >
-            <Text style={styles.navButtonText}>Ejercicios completados</Text>
+            <Text style={styles.navButtonText}>Dias completados</Text>
           </Pressable>
         </View>
       </ScrollView>

@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    environment {
+        NODE_VERSION = '20.17.0' // Cambia según la versión que uses para React Native
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/TU_USUARIO/TU_REPOSITORIO.git'
+            }
+        }
+        stage('Setup Node.js') {
+            steps {
+                script {
+                    // Usa una imagen con Node preinstalado
+                    sh 'nvm install ${NODE_VERSION}'
+                    sh 'nvm use ${NODE_VERSION}'
+                }
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                sh 'npm test'
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Pipeline ejecutado con éxito.'
+        }
+        failure {
+            echo 'El pipeline falló.'
+        }
+    }
+}
