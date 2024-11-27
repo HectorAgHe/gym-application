@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/TU_USUARIO/TU_REPOSITORIO.git'
+                git branch: 'main', url: 'https://github.com/HectorAgHe/gym-application.git'
             }
         }
         stage('Setup Node.js') {
