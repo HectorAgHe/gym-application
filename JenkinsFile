@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+    environment {
+        NODE_VERSION = '20' // Cambia según la versión que uses para React Native
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/HectorAgHe/gym-application.git'
+            }
+        }
+        stage('Setup Node.js') {
+            steps {
+                script {
+                    // Usa una imagen con Node preinstalado
+                    sh 'nvm install ${NODE_VERSION}'
+                    sh 'nvm use ${NODE_VERSION}'
+                }
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                sh 'npm test -- --coverage'
+            }
+        }
+        stage('Build App') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+        stage('Archive Coverage Reports') {
+            steps {
+                // Archiva el reporte de cobertura si Jest genera un archivo HTML o similar
+                archiveArtifacts artifacts: 'coverage/**', allowEmptyArchive: true
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Pipeline ejecutado con éxito. Aplicación construida y cobertura generada.'
+        }
+        failure {
+            echo 'El pipeline falló.'
+        }
+    }
+}
