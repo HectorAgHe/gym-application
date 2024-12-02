@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Audio } from 'expo-av';
-
+//Hola
 const WorkoutTimer = () => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [isResting, setIsResting] = useState(false);
