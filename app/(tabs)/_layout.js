@@ -13,6 +13,7 @@ export default function TabsLayout (){
         borderTopColor: "transparent", // Asegura que el borde superior no tenga color
         elevation: 0, // Elimina la sombra (en dispositivos Android)
         shadowOpacity: 0, // Elimina la sombra (en dispositivos iOS)
+        height: 100,
       }, /*Color de la barra de navegacion inferior*/ 
       tabBarActiveTintColor: "orange", /*Color del icono activo (el icono que se presiono)*/
     }}
@@ -21,29 +22,37 @@ export default function TabsLayout (){
     /*en name va el nombre de la pestaña que esta dentro de (tabs)*/
       name="home"
       options={{
-        title: "Home",
-        tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+        title: "",
+        tabBarIcon: ({ color, size}) => <HomeIcon color={color} size={38} />,
       }}
     />
     <Tabs.Screen
       name="exercises"
       options={{
-        title: "Ejercicios",
-        tabBarIcon: ({ color }) => <ExcerciceIcon color={color} />,
+        title: "",
+        tabBarIcon: ({ color }) => <ExcerciceIcon color={color} size={38} />,
       }}
     />
     <Tabs.Screen
     name="calendar"
     options={{
-      title:"Calendario",
-      tabBarIcon:({color})=> <CalendarIcon color={color} />
+      title:"",
+      tabBarIcon:({color})=> <CalendarIcon color={color} size={38} />
     }}
     />
      <Tabs.Screen
       name="profile"
       options={{
-        title: "Perfil",
-        tabBarIcon: ({ color }) => <UserIcon color={color} />,
+        title: "",
+        tabBarIcon: ({ color }) => <UserIcon color={color} size={38} />,
+      }}
+    />
+    <Tabs.Screen
+    /*en name va el nombre de la pestaña que esta dentro de (tabs)*/
+      name="counter"
+      options={{
+        title: "",
+        tabBarIcon: ({ color }) => <HomeIcon color={color} size={38} />,
       }}
     />
   </Tabs>
