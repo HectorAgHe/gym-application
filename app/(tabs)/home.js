@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity, Pressable } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
+import axios from "../../api/axios";
 import { useRouter } from "expo-router";
 import { useFocusEffect } from 'expo-router';
 
@@ -16,7 +16,7 @@ export default function Home() {
       try {
         const storedName = await AsyncStorage.getItem("authToken");
         if (storedName) {
-          const res = await axios.get("http://localhost:4000/api/verifyToken", {
+          const res = await axios.get("/verifyToken", {
             headers: {
               authorization: "Bearer " + storedName,
             },
@@ -48,7 +48,7 @@ export default function Home() {
             },
           };
 
-          const res = await axios.get("http://localhost:4000/api/completed", config);
+          const res = await axios.get("/completed", config);
           setCompletedEvents(res.data);
         } catch (error) {
           console.error("Ocurrió el siguiente error:", error);

@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { DateIcon, EmailIcon, LogoutIcon, UserIcon } from "../../components/Icons";
 import { useRouter } from 'expo-router'; // Importar el hook useRouter
@@ -15,7 +15,7 @@ export default function Profile() {
       try {
         const storedName = await AsyncStorage.getItem("authToken");
         if (storedName) {
-          const res = await axios.get("http://localhost:4000/api/verifyToken", {
+          const res = await axios.get("/verifyToken", {
             headers: {
               authorization: "Bearer " + storedName,
             },

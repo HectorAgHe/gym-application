@@ -11,7 +11,7 @@ import {
 import { useLocalSearchParams, useRouter } from "expo-router";
 // import { data } from '../../utils/data';
 import { AddIcon } from "../../components/Icons";
-import axios from "axios";
+import axios from "../../api/axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ejerciciosData from "../../Ejercicios";
 import { ArrowBack } from "../../components/Icons";
@@ -93,7 +93,7 @@ export default function ExerciseDetails() {
 
                   // Realiza la solicitud POST
                   const res = await axios.post(
-                    "http://localhost:4000/api/excercises",
+                    "/excercises",
                     exerciseData,
                     config
                   );

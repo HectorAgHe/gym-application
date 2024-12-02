@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axios";
 import { useRouter } from "expo-router";
 import { useState } from "react"
 import {View,Image,Text,TextInput, StyleSheet, Pressable} from "react-native"
@@ -17,7 +17,7 @@ export default function FormSignIn(){
 
    const signIn  = async ()=>{
     try {
-        const res = await axios.post('http://localhost:4000/api/signIn',{
+        const res = await axios.post('/signIn',{
             username,
             password
         })

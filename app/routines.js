@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axios";
 import { useEffect, useState } from "react";
 import { StyleSheet, View, Text, ActivityIndicator, ScrollView, Pressable } from "react-native";
 import { DeleteIcon } from "../components/Icons";
@@ -24,7 +24,7 @@ export default function Routines() {
                       Authorization: `Bearer ${currentToken}`,
                     },
                   };
-                const res = await axios.get("http://localhost:4000/api/excercises", config);
+                const res = await axios.get("/excercises", config);
                 console.log(res.data)
                 setListExercises(res.data);
                 setIsLoading(false);
@@ -66,7 +66,7 @@ export default function Routines() {
                             <View style={styles.containerIcon} >
                             <Pressable onPress={async()=>{
                                try {
-                                 const res= await axios.delete(`http://localhost:4000/api/ecxercises/${exercise._id}`)
+                                 const res= await axios.delete(`/ecxercises/${exercise._id}`)
                                  if(res.status === 201){
                                     setListExercises(listExercises.filter((e)=>{
                                         return e._id !== exercise._id

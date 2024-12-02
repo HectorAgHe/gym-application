@@ -1,7 +1,7 @@
 import { StyleSheet,TextInput,View,Image, Pressable,Text } from "react-native";
 // import { Stack } from "expo-router";
 import { useState } from "react";
-import axios from "axios";
+import axios from "../api/axios"
 import { useRouter } from "expo-router";
 import logo from "../assets/WhatsApp Image 2024-10-07 at 12.38.12 PM.jpeg"
 import { ArrowIcon } from "../components/Icons";
@@ -23,7 +23,7 @@ export default function FormRegister(){
 
   const registerUser = async()=>{
     try {
-       const res= await axios.post('http://localhost:4000/api/register',{
+       const res= await axios.post('/register',{
             username,
             email,
             password1,

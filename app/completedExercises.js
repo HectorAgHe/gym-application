@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { View, ActivityIndicator, StyleSheet, ScrollView, Text, Pressable } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
-import { ArrowBack, FitnessIcon } from "../components/Icons";
+import axios from "../api/axios";
+import { ArrowBack, DeleteIcon, FitnessIcon } from "../components/Icons";
 import { useRouter } from "expo-router";
 
 
@@ -11,6 +11,21 @@ export default function CompletedExercises() {
   const [isLoading, setIsLoading] = useState(true);
 
   const router = useRouter()
+
+
+  async function deleteEvent (id){
+    try {
+      const res = await axios.delete(`/completed/${id}`)
+      if(res.status === 201){
+        setCompletedEvents(completedEvents.filter((e)=>{
+          return e._id !== id
+        }))
+        console.log('Se elimino correctamente el ejercicio')
+      }
+    } catch (error) {
+      console.log('Ocurrio el siguiente error', error.response)
+    }
+  }
 
   useEffect(() => {
     const getCompletedEvents = async () => {
@@ -27,7 +42,7 @@ export default function CompletedExercises() {
           },
         };
 
-        const res = await axios.get("http://localhost:4000/api/completed", config);
+        const res = await axios.get("/completed", config);
         setCompletedEvents(res.data);
         setIsLoading(false);
       } catch (error) {
@@ -67,6 +82,11 @@ export default function CompletedExercises() {
                   <Text style={styles.cardTitle}>{exercise.description}</Text>
                   <Text style={styles.cardSubtitle}>{`Fecha: ${exercise.date}`}</Text>
                 </View>
+               <Pressable onPress={async()=>{
+                   await deleteEvent(exercise._id)
+               }} >
+               <DeleteIcon color='orange' />
+               </Pressable>
               </View>
             ))}
           </View>

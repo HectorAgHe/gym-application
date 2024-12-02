@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import React, { useEffect, useState } from "react";
 import {
   View,
@@ -45,7 +45,7 @@ export default function MyCalendar() {
     };
     try {
       await axios.post(
-        "http://localhost:4000/api/calendary",
+        "/calendary",
         {
           description: eventText,
           date: selectedDate,
@@ -53,7 +53,7 @@ export default function MyCalendar() {
         config
       );
       const res = await axios.get(
-        "http://localhost:4000/api/calendary",
+        "/calendary",
         config
       );
       setEventsList(res.data);
@@ -68,7 +68,7 @@ export default function MyCalendar() {
   const deleteEvent = async (id) => {
     try {
       const res = await axios.delete(
-        `http://localhost:4000/api/calendary/${id}`
+        `/calendary/${id}`
       );
       if (res.status === 200) {
         setEventsList(eventsList.filter((event) => event._id !== id));
@@ -95,7 +95,7 @@ export default function MyCalendar() {
 
       // Realiza la solicitud POST
       const res = await axios.post(
-        "http://localhost:4000/api/completed",
+        "/completed",
         {
           description: event.description,
           date: event.date,
@@ -121,7 +121,7 @@ export default function MyCalendar() {
       };
       try {
         const res = await axios.get(
-          "http://localhost:4000/api/calendary",
+          "/calendary",
           config
         );
         setEventsList(res.data);
@@ -226,7 +226,7 @@ export default function MyCalendar() {
                       };
                       try {
                         const res = await axios.get(
-                          "http://localhost:4000/api/calendary",
+                          "/calendary",
                           config
                         );
                         setEventsList(res.data);
