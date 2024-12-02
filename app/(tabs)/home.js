@@ -5,6 +5,9 @@ import axios from "axios";
 import { useRouter } from "expo-router";
 import { useFocusEffect } from 'expo-router';
 
+
+
+
 export default function Home() {
   const [userName, setUserName] = useState("");
   const [isLoading,setIsLoading] = useState(true)
@@ -60,6 +63,7 @@ export default function Home() {
   );
 
   return (
+    
     <View style={styles.mainContainer}>
       <ScrollView contentContainerStyle={styles.container}>
         {/* Header con bienvenida al usuario */}
@@ -67,7 +71,7 @@ export default function Home() {
           <Text style={styles.welcomeText}>{userName && !isLoading ? `Bienvenido de nuevo, ${userName}!` : "Bienvenido!"}</Text>
           {/* Avatar del usuario */}
           <Image
-            source={{ uri: "https://via.placeholder.com/150" }} // Placeholder para el avatar
+            source={{ uri: "./assets/iconPerfi.jpeg" }} // Placeholder para el avatar
             style={styles.avatar}
           />
         </View>
@@ -110,12 +114,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#121212", // Fondo oscuro más suave
+    backgroundColor: "black", // Fondo oscuro más suave
   },
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#121212", // Fondo oscuro
+    backgroundColor: "black", // Fondo oscuro
     justifyContent: "center",
     alignItems: "center",
   },
@@ -134,12 +138,12 @@ const styles = StyleSheet.create({
     flexShrink: 1, // Evita que el texto se salga de la pantalla
   },
   avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 66,
+    height: 66,
+    borderRadius: 50,
     marginLeft: 10,
-    borderWidth: 2,
-    borderColor: '#F0A500', // Borde del avatar con color naranja
+    borderWidth: 1,
+    borderColor: 'white', // Borde del avatar con color naranja
   },
   progressSection: {
     marginBottom: 30,
