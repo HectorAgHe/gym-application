@@ -22,24 +22,31 @@ export default function FormRegister(){
 
 
   const registerUser = async()=>{
-    try {
-       const res= await axios.post('/register',{
-            username,
-            email,
-            password1,
-            password2
-        })
-        if(res.status === 201){
-         alert(res.data.message)
-         /*router.push es para navegar entre pantallas, y la ruta es el nombre del archivo dentro del directorio app*/
-         router.push('/formSignIn')
-         return 
-        }
-    } catch (error) {
-         alert(error.response.data.error)
-         return
-    }
+   if(!username || !email || !password1 || !password2){
+    alert('De favor, rellena todos los campos')
+    return
+   }
+   if(password1.length < 8 && password2.length < 8){
+    alert('Contraseña debil, deben de ser 8 o mas caracteres')
+    return
   }
+  try {
+    const res= await axios.post('/register',{
+         username,
+         email,
+         password1,
+         password2
+     })
+     if(res.status === 201){
+      alert(res.data.message)
+      /*router.push es para navegar entre pantallas, y la ruta es el nombre del archivo dentro del directorio app*/
+      router.push('/formSignIn')
+      return 
+     }
+ } catch (error) {
+      alert(error.response.data.error)
+      return
+ }}
 
     return (
     <>
