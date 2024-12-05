@@ -5,25 +5,20 @@ import axios from "../api/axios";
 import { ArrowBack, DeleteIcon, FitnessIcon } from "../components/Icons";
 import { useRouter } from "expo-router";
 
-
 export default function CompletedExercises() {
   const [completedEvents, setCompletedEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
-  const router = useRouter()
-
-
-  async function deleteEvent (id){
+  async function deleteEvent(id) {
     try {
-      const res = await axios.delete(`/completed/${id}`)
-      if(res.status === 201){
-        setCompletedEvents(completedEvents.filter((e)=>{
-          return e._id !== id
-        }))
-        console.log('Se elimino correctamente el ejercicio')
+      const res = await axios.delete(`/completed/${id}`);
+      if (res.status === 201) {
+        setCompletedEvents(completedEvents.filter((e) => e._id !== id));
+        console.log("Se eliminó correctamente el ejercicio");
       }
     } catch (error) {
-      console.log('Ocurrio el siguiente error', error.response)
+      console.log("Ocurrió el siguiente error", error.response);
     }
   }
 
@@ -43,25 +38,36 @@ export default function CompletedExercises() {
         };
 
         const res = await axios.get("/completed", config);
-        setCompletedEvents(res.data);
+        if (Array.isArray(res.data)) {
+          setCompletedEvents(res.data);
+        } else {
+          setCompletedEvents([]); // Asegúrate de que siempre sea un arreglo
+        }
         setIsLoading(false);
       } catch (error) {
         console.error("Ocurrió el siguiente error:", error);
+        setIsLoading(false); // Oculta el indicador de carga en caso de error
       }
     };
 
     getCompletedEvents();
   }, []);
 
-  if (isLoading && completedEvents.length === 0) {
+  if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
-        <Pressable onPress={()=>{
-                router.push('/home')
-            }} >
-            <ArrowBack color='orange' />
-            </Pressable>
-         <Text style={styles.noDataText}>¡Aún no tienes algun ejercicio completado!</Text>
+        <ActivityIndicator size="large" color="orange" />
+      </View>
+    );
+  }
+
+  if (!isLoading && Array.isArray(completedEvents) && completedEvents.length === 0) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Pressable onPress={() => router.push("/home")}>
+          <ArrowBack color="orange" />
+        </Pressable>
+        <Text style={styles.noDataText}>¡Aún no tienes algún ejercicio completado!</Text>
       </View>
     );
   }
@@ -69,42 +75,35 @@ export default function CompletedExercises() {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View style={styles.iconArrowBack} >
-            <Pressable onPress={()=>{
-                router.push('/home')
-            }} >
-            <ArrowBack color='orange' />
-            </Pressable>
+        <View style={styles.iconArrowBack}>
+          <Pressable onPress={() => router.push("/home")}>
+            <ArrowBack color="orange" />
+          </Pressable>
         </View>
-        {completedEvents.length === 0 && !isLoading ? (
-          <Text style={styles.noDataText}>¡Aún no tienes algun ejercicio completado!</Text>
-        ) : (
-          <View style={styles.listContainer}>
-            {completedEvents.map((exercise) => (
+        <View style={styles.listContainer}>
+          {Array.isArray(completedEvents) &&
+            completedEvents.map((exercise) => (
               <View key={exercise._id} style={styles.card}>
-                <FitnessIcon color='orange' />
+                <FitnessIcon color="orange" />
                 <View style={styles.cardContent}>
                   <Text style={styles.cardTitle}>{exercise.description}</Text>
                   <Text style={styles.cardSubtitle}>{`Fecha: ${exercise.date}`}</Text>
                 </View>
-               <Pressable onPress={async()=>{
-                   await deleteEvent(exercise._id)
-               }} >
-               <DeleteIcon color='orange' />
-               </Pressable>
+                <Pressable onPress={async () => await deleteEvent(exercise._id)}>
+                  <DeleteIcon color="orange" />
+                </Pressable>
               </View>
             ))}
-          </View>
-        )}
+        </View>
       </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-    iconArrowBack:{
-      marginTop:20
-    },
+  iconArrowBack: {
+    marginTop: 20,
+  },
   container: {
     flex: 1,
     backgroundColor: "#121212",
@@ -112,10 +111,10 @@ const styles = StyleSheet.create({
     paddingTop: 16,
   },
   loadingContainer: {
-    flex: 1, // Ocupa toda la pantalla
-    justifyContent: "center", // Centra verticalmente
-    alignItems: "center", // Centra horizontalmente
-    backgroundColor: "#121212", // Fondo oscuro consistente
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#121212",
   },
   listContainer: {
     width: "100%",
@@ -133,11 +132,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 5,
     elevation: 6,
-    gap:20,
-    // width:150
-  },
-  icon: {
-    marginRight: 16,
+    gap: 20,
   },
   cardContent: {
     flex: 1,
@@ -153,7 +148,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   noDataText: {
-    color: "#f4a261",
+    color: "orange",
     fontSize: 18,
     textAlign: "center",
     marginTop: 32,

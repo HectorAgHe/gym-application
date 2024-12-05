@@ -52,7 +52,7 @@ export default function Exercises() {
         />
         <Pressable style={styles.searchButton} onPress={()=>{
           const filterData = allExercises.ejercicios.filter((item)=>{
-            return item.nombre.toLowerCase().startsWith(query.toLowerCase());
+            return item.name.toLowerCase().startsWith(query.toLowerCase());
           })
           setTimeout(() => {
             setListExercises({ejercicios:filterData})
@@ -71,8 +71,8 @@ export default function Exercises() {
             listExercises.ejercicios.map((exercise, index) => (
               <View key={exercise.id} style={styles.card}>
                 {/* <Image source={exercise.url}  style={{ width: 100, height: 100 }} /> */}
-                <Text style={styles.title}>{exercise.nombre}</Text>
-                <Text style={styles.descripcion} >{exercise.descripcion}</Text>
+                <Text style={styles.title}>{exercise.name}</Text>
+                <Text style={styles.descripcion} >{exercise.description}</Text>
                 <View style={styles.separator} />
                 {/* <Text style={styles.subTitle}>Difficulty: {exercise.difficulty}</Text>
                 <Text style={styles.description}>Targeted Muscle: {exercise.muscle}</Text>
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black", // Fondo oscuro
     paddingHorizontal: 16, // Añadir padding horizontal para margen
+    
   },
   loaderContainer: {
     flex: 1,

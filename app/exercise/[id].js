@@ -15,6 +15,7 @@ import axios from "../../api/axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ejerciciosData from "../../Ejercicios";
 import { ArrowBack } from "../../components/Icons";
+// import { configureLayoutAnimationBatch } from "react-native-reanimated/lib/typescript/core";
 export default function ExerciseDetails() {
   const [exerciseData, setExerciseData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +33,13 @@ export default function ExerciseDetails() {
       setExerciseData(
         ejerciciosData.ejercicios.find((exercise) => exercise.id == id)
       );
+      // try {
+      //   const res = await axios.get(`/excercise/${id}`)
+      //   setExerciseData(res.data)
+      //   console.log(res.data)
+      // } catch (error) {
+      //   console.log('ocurrio el siguiente error')
+      // }
       setIsLoading(false);
     };
     loadData();
@@ -58,12 +66,12 @@ export default function ExerciseDetails() {
               <ArrowBack color="orange" />
             </Pressable>
           </View>
-          <Image
+           <Image
             source={exerciseData.url}
             style={{ width: 200, height: 200 }}
-          />
-          <Text style={styles.name}>{exerciseData.nombre}</Text>
-          {exerciseData.instrucciones.map((data, index) => {
+          /> 
+          <Text style={styles.name}>{exerciseData.name}</Text>
+          {exerciseData.instructions.map((data, index) => {
             return (
               <View key={data.id} style={styles.instructionContainer}>
                 <Text style={styles.stepNumber}>{index + 1}.</Text>
@@ -123,6 +131,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
+    textAlign: "center"
   },
   icon: {
     marginTop: 15,
@@ -132,6 +141,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#000",
+    textAlign: "justify"
   },
   content: {
     alignItems: "center",
@@ -170,5 +180,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     color: "#333", // Un color neutro para el texto principal
+    textAlign: "justify",
+    
   },
 });

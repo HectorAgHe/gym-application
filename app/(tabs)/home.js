@@ -81,7 +81,7 @@ export default function Home() {
           <Text style={styles.sectionTitle}>Tu Progreso</Text>
           <View style={styles.progressContainer}>
             <View style={styles.progressCard}>
-              <Text style={styles.progressNumber}>{completedEvents ? completedEvents.length : '0'}</Text>
+            <Text style={styles.progressNumber}>{completedEvents.length > 0 ? completedEvents.length : '0'}</Text>
               <Text style={styles.progressLabel}>Dias de rutina completados</Text>
             </View>
             <View style={styles.progressCard}>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 10,
+    padding: 20,
     backgroundColor: "black", // Fondo oscuro más suave
   },
   container: {

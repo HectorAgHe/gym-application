@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, Pressable } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Audio } from 'expo-av';
 //Hola
@@ -105,16 +105,20 @@ const WorkoutTimer = () => {
       </Picker>
 
       <Text style={styles.timer}>
-        {isResting ? 'Tiempo' : 'Descansa'}: {timeLeft}s
+        {isResting ? 'Descansa' : 'Tiempo'}: {timeLeft}s
       </Text>
       <Text style={styles.series}>Repeticiones restantes: {seriesLeft}</Text>
-
+{/* 
       <Button 
         title={isRunning ? 'Reiniciar¿?' : '¡Vamos!'}
         onPress={isRunning ? resetTimer : startTimer  }
         color="#F0A500"
-        accessibilityLabel="Click"                
-      />
+        accessibilityLabel="Click" 
+        
+      /> */}
+      <Pressable style={styles.buttonClock}  onPress={isRunning ? resetTimer : startTimer  } >
+        <Text style={styles.buttonTextClock} >{isRunning ? 'Reiniciar' : '¡Vamos!'}</Text>
+      </Pressable>
     </View>
   );
 };
@@ -161,6 +165,18 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     color: "white",
   },
+  buttonClock:{
+    backgroundColor:'orange',
+    borderRadius:5,
+    width:120,
+    height:30,
+    display:"flex",
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  buttonTextClock:{
+    color:'white'
+  }
   
 });
 

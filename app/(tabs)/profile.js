@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "black",
+    backgroundColor: "#1E1E1E",
     padding: 20,
     gap:10
   },
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   },
   homeButton: {
     marginTop: 20,
-    padding: 15,
+    padding: 20,
     backgroundColor: "#1E1E1E",
     borderRadius: 10,
     // width:100,

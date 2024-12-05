@@ -16,31 +16,35 @@ export default function FormSignIn(){
        const router = useRouter()
 
    const signIn  = async ()=>{
-    try {
-        const res = await axios.post('/signIn',{
-            username,
-            password
-        })
-        if(res.status === 200){
-            alert(res.data.message)
-            console.log('Token recibido: ', res.data.token)
-            /*Establece el token que viene en la data de la respuesta de la peticion*/
-            await AsyncStorage.setItem('authToken',res.data.token)
-            const storedToken = await AsyncStorage.getItem('authToken')
-            if(storedToken){
-                router.push('/home')
-                return
-            }else{
-                console.log('El token no se guardo')
-            }
+   if(!username || !password){
+    alert('De favor, rellena todos los campos')
+    return 
+   }
+   try {
+    const res = await axios.post('/signIn',{
+        username,
+        password
+    })
+    if(res.status === 200){
+        alert(res.data.message)
+        console.log('Token recibido: ', res.data.token)
+        /*Establece el token que viene en la data de la respuesta de la peticion*/
+        await AsyncStorage.setItem('authToken',res.data.token)
+        const storedToken = await AsyncStorage.getItem('authToken')
+        if(storedToken){
+            router.push('/home')
             return
+        }else{
+            console.log('El token no se guardo')
         }
-    } catch (error) {
-        console.log(error.response.data.error)
-        alert(error.response.data.error)
-        // console.log(error)
-        // return
+        return
     }
+} catch (error) {
+    console.log(error.response.data.error)
+    alert(error.response.data.error)
+    // console.log(error)
+    // return
+}
    }
 
    return (
