@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 import { View } from "react-native";
-import { HomeIcon, ExcerciceIcon, UserIcon, CalendarIcon } from "../../components/Icons";
+import { HomeIcon, ExcerciceIcon, UserIcon, CalendarIcon, ClockIcon } from "../../components/Icons";
 
 /*Este layout renderiza las pestañas, los archivos que este dentro de tabs contaran como una pestaña*/
 export default function TabsLayout (){
@@ -52,7 +52,7 @@ export default function TabsLayout (){
       name="counter"
       options={{
         title: "",
-        tabBarIcon: ({ color }) => <HomeIcon color={color} size={38} />,
+        tabBarIcon: ({ color }) => <ClockIcon color={color} size={38} />,
       }}
     />
   </Tabs>

@@ -94,7 +94,7 @@ export default function Exercises() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#121212", // Fondo oscuro
+    backgroundColor: "black", // Fondo oscuro
     paddingHorizontal: 16, // Añadir padding horizontal para margen
   },
   loaderContainer: {

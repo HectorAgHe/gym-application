@@ -254,7 +254,7 @@ export default function MyCalendar() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#121212",
+    backgroundColor: "black",
     paddingTop: 40,
   },
   calendarContainer: {

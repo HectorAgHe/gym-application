@@ -66,7 +66,7 @@ export default function Routines() {
                             <View style={styles.containerIcon} >
                             <Pressable onPress={async()=>{
                                try {
-                                 const res= await axios.delete(`/ecxercises/${exercise._id}`)
+                                 const res= await axios.delete(`/excercises/${exercise._id}`)
                                  if(res.status === 201){
                                     setListExercises(listExercises.filter((e)=>{
                                         return e._id !== exercise._id
