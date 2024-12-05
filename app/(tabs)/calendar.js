@@ -139,7 +139,7 @@ export default function MyCalendar() {
         <View style={styles.calendarContainer}>
           <Calendar
             theme={{
-              calendarBackground: "#1c1c1c",
+              calendarBackground: "black",
               dayTextColor: "#fff",
               monthTextColor: "#fff",
               arrowColor: "#F0A500",
@@ -255,6 +255,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "black",
+<<<<<<< HEAD
+    justifyContent: "center",
+    alignContent: "center",
+=======
+>>>>>>> c6600bfb5594d0be4d6d7903157e02053e39b529
     paddingTop: 40,
   },
   calendarContainer: {

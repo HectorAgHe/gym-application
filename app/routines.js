@@ -36,10 +36,10 @@ export default function Routines() {
         getData();
     }, []);
 
-    if (isLoading) {
+    if (isLoading && listExercises.length === 0) {
         return (
             <View style={styles.container}>
-                <ActivityIndicator size="large" color="#f4a261" />
+                 <Text style={styles.noDataText}>¡Aún no tienes alguna rutina agregada!</Text>
             </View>
         );
     }
