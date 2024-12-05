@@ -94,7 +94,7 @@ export default function Exercises() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#121212", // Fondo oscuro
+    backgroundColor: "black", // Fondo oscuro
     paddingHorizontal: 16, // Añadir padding horizontal para margen
   },
   loaderContainer: {
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 16,
-    backgroundColor: "#1e1e1e",
+    backgroundColor: "black",
     borderRadius: 8,
     marginTop:30
     // paddingHorizontal: 10,

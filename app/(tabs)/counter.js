@@ -93,7 +93,7 @@ const WorkoutTimer = () => {
       </Picker>
 
       {/* Selección de series */}
-      <Text style={styles.label}>Series a trabajar:</Text>
+      <Text style={styles.label}>Repeticiones a trabajar:</Text>
       <Picker
         selectedValue={totalSeries}
         onValueChange={(value) => setTotalSeries(value)}
@@ -107,13 +107,13 @@ const WorkoutTimer = () => {
       <Text style={styles.timer}>
         {isResting ? 'Tiempo' : 'Descansa'}: {timeLeft}s
       </Text>
-      <Text style={styles.series}>Series restantes: {seriesLeft}</Text>
+      <Text style={styles.series}>Repeticiones restantes: {seriesLeft}</Text>
 
-      <Button
+      <Button 
         title={isRunning ? 'Reiniciar¿?' : '¡Vamos!'}
         onPress={isRunning ? resetTimer : startTimer  }
-        color="red"
-        accessibilityLabel="Click"
+        color="#F0A500"
+        accessibilityLabel="Click"                
       />
     </View>
   );
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     
   },
   header: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 20,
     color: "white",
@@ -139,24 +139,29 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: "white",
-    margin:15
+    margin:5,
+    
   },
   picker: {
+    color: "#F0A500",
     height: 50,
     width: 200,
+    
+    marginTop: 5
   },
   timer: {
     fontSize: 48,
     fontWeight: 'bold',
     marginBottom: 20,
     marginTop: 20,
-    color: '#F0A500'
+    color: 'gold'
   },
   series: {
     fontSize: 18,
     marginBottom: 20,
     color: "white",
   },
+  
 });
 
 export default WorkoutTimer;

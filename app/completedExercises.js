@@ -53,10 +53,15 @@ export default function CompletedExercises() {
     getCompletedEvents();
   }, []);
 
-  if (isLoading) {
+  if (isLoading && completedEvents.length === 0) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#f4a261" />
+        <Pressable onPress={()=>{
+                router.push('/home')
+            }} >
+            <ArrowBack color='orange' />
+            </Pressable>
+         <Text style={styles.noDataText}>¡Aún no tienes algun ejercicio completado!</Text>
       </View>
     );
   }

@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    padding: 10,
     backgroundColor: "black", // Fondo oscuro más suave
   },
   container: {
@@ -160,10 +161,11 @@ const styles = StyleSheet.create({
   progressContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
+    margin: "12"
   },
   progressCard: {
     backgroundColor: "rgba(255, 102, 0, 0.15)", // Fondo con opacidad para destacar
-    padding: 20,
+    padding: 10,
     borderRadius: 15,
     alignItems: "center",
     width: "45%",
