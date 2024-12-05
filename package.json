@@ -17,17 +17,6 @@
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/stack": "^6.4.1",
     "axios": "^1.7.7",
-<<<<<<< HEAD
-    "expo": "^52.0.0",
-    "expo-constants": "~17.0.3",
-    "expo-linking": "~7.0.3",
-    "expo-router": "~4.0.9",
-    "expo-secure-store": "~14.0.0",
-    "expo-status-bar": "~2.0.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-native": "0.76.3",
-=======
     "expo": "~51.0.28",
     "expo-av": "~14.0.7",
     "expo-constants": "~16.0.2",
@@ -38,7 +27,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.5",
->>>>>>> 1209b33d763e87b16b8c77272c2afc2143bab734
     "react-native-calendars": "^1.1307.0",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-reanimated": "~3.16.1",
