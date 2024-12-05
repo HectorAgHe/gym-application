@@ -53,3 +53,7 @@ export const ArrowBack = (props)=>{
     return <AntDesign name="arrowleft" size={35} color="orange" />
 }
 
+export const ClockIcon = (props)=>{
+    return <AntDesign name="clockcircleo" size={20} color="white" {...props} />
+}
+
