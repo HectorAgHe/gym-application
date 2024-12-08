@@ -9,6 +9,7 @@ import { useFocusEffect } from 'expo-router';
 
 
 export default function Home() {
+  
   const [userName, setUserName] = useState("");
   const [isLoading,setIsLoading] = useState(true)
   const[completedEvents,setCompletedEvents] = useState([])

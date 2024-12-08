@@ -37,7 +37,7 @@ export default function Profile() {
       <Image
         style={styles.avatar}
         source={{
-          uri:  "https://via.placeholder.com/150" 
+          uri:  "../../assets/iconPerfi.jpeg" 
         }}
       />
 
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   },
   homeButton: {
     marginTop: 20,
-    padding: 20,
+    padding: 15,
     backgroundColor: "#1E1E1E",
     borderRadius: 10,
     // width:100,
